@@ -74,9 +74,9 @@ if (isset($_REQUEST['action'])) {
             # code...
             echo 'Actualizando Cliente <br>';
 
-            $cliente->setNombre('Ruben');          //los parametros deben ser recibido por get o post desde el form, ej, $_POST['nombre']
-            $cliente->setApellido('Peuchelen');
-            $cliente->setCedula(7894561);
+            $cliente->setNombre('');          //los parametros deben ser recibido por get o post desde el form, ej, $_POST['nombre']
+            $cliente->setApellido('');
+            $cliente->setCedula(0);
             $cliente->setEstado(1);
 
             if ($cliente->updateCliente($cliente, $cnn) == 0)
@@ -86,6 +86,7 @@ if (isset($_REQUEST['action'])) {
 
         case 'getAll':
             # code...
+            
             $rsCliente = $cliente->getAllCliente($cnn);
             
             break;

@@ -12,7 +12,7 @@ class Conexion{
 	public function connect(){
 		$options = array(
 			PDO::MYSQL_ATTR_INIT_COMMAND 	=> 'SET NAMES utf8',
-			PDO::ATTR_ERRMODE 				=> PDO::ERRMODE_EXCEPTION, 
+			PDO::ATTR_ERRMODE 				=> PDO::ERRMODE_EXCEPTION,
 			PDO::MYSQL_ATTR_FOUND_ROWS 		=> true,
 			PDO::ATTR_PERSISTENT 			=> true
 		);

@@ -30,63 +30,55 @@ require_once '../controller/ClienteController.php';
     </thead>
     <tbody>
       </tr>
-      <?php 
-        foreach ($rsCliente as $key => $value) {
-          echo '<tr>';
-          echo '<td style="display: none">'.$value->id.'</td>';
-          echo '<td>'.$value->nombre.'</td>';
-          echo '<td>'.$value->apellido.'</td>';
-          echo '<td>'.$value->cedula.'</td>';
-          echo '<td><button class="btn btn-success btn-sm" onclick="verDetalle('.$value->id.');">ver detalle</button> 
+      <?php
+      foreach ($rsCliente as $key => $value) {
+        echo '<tr>';
+        echo '<td style="display: none">' . $value->id . '</td>';
+        echo '<td>' . $value->nombre . '</td>';
+        echo '<td>' . $value->apellido . '</td>';
+        echo '<td>' . $value->cedula . '</td>';
+        echo '<td><button class="btn btn-success btn-sm" onclick="verDetalle(' . $value->id . ');">ver detalle</button> 
                     <button class="btn btn-danger btn-sm">Borrar</button> </td>';
-          echo '</tr>';
-        }
-        ?>
+        echo '</tr>';
+      }
+      ?>
     </tbody>
   </table>
 </div>
 
 <?php
-if($rsCliente==null)
-  echo 'no exisen registros';  
+if ($rsCliente == null)
+  echo 'no exisen registros';
 ?>
 
 <!-- Modal -->
 <div id="detalleModal" name="detalleModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <!-- Contenido del modal -->
     <div class="modal-content">
       <div class="modal-header">
-      Detalle del Cliente
+        Detalle del Cliente
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        
+
       </div>
       <div class="modal-body">
-        
+
+        <table class="table table-striped table-hover responsive" id="table-detalle">
+
+          <thead>
+            <tr>
+              <th>Telefono</th>
+              <th>Domicilio</th>
+              <th>Email</th>
+              <th>Pais</th>
+            </tr>
+          </thead>
+        </table>
+
       </div>
-      
+
       <div class="modal-footer">
-      <div id="mensaje"></div> <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+        <div id="mensaje"></div> <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-
-<script>
-//ver detalle del cliente
-function verDetalle(id){
-  console.log(id);
-  $('#detalleModal').modal('show');
-
-  $.ajax({
-    url:'../controller/DetalleController.php',
-    type:'post',
-    data:{id:id, action:'getByCi'},
-    beforeSend: function(){
-      $('#mensaje').html("Procesando peticion...");
-    },
-    success: function (reponse){
-      $('#mensaje').html(response);
-    }
-  });
-}
-</script>

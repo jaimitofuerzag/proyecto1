@@ -171,30 +171,21 @@ class DetalleModel{
         }     
     }
 
-    public function getDetalleByID($id, $cnn){
-        try {
+    public function getDetalleByID($id_fk, $cnn){        
 			try {
-                $sql = 'SELECT * FROM detalle WHERE fk_id_cliente =:id';
-                $stmt = $cnn->prepare($sql);
-                $stmt->bindParam(':fk_id_cliente', $id);
-                $stmt->execute();
-                if (!$stmt->rowCount()){
-                    echo "Deletion failed";
-                    return 0;
-                } 
-                
+                $sql  = ' SELECT * FROM detalle where fk_id_cliente = '.$id_fk;
+                $stmt = $cnn->query($sql);
+                //$stmt->bindParam(":fk_id_cliente", $id_fk, PDO::PARAM_INT);
+                //$stmt->execute();
+
+                return $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+                                
             } catch (PDOException $e) {
                 //throw $th;
                 echo 'Mensaje : -> ' . $e->getMessage();
                 return 0;
                 die();
-            }
-		} catch (PDOException $e) {
-			//throw $th;
-			echo 'Mensaje : -> '.get_class($this).' - '.$e->getMessage();
-            return 1 ;
-			die();
-		}
+            }		
     }
 
     public function getDetalleByCi($id, $cnn){
@@ -221,6 +212,10 @@ class DetalleModel{
             return 1 ;
 			die();
 		}
+
+    }
+
+    public function getAllDetalle($cnn){
 
     }
 }
