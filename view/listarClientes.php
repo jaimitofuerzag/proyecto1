@@ -38,7 +38,8 @@ require_once '../controller/ClienteController.php';
         echo '<td>' . $value->apellido . '</td>';
         echo '<td>' . $value->cedula . '</td>';
         echo '<td><button class="btn btn-success btn-sm" onclick="verDetalle(' . $value->id . ');">ver detalle</button> 
-                    <button class="btn btn-danger btn-sm">Borrar</button> </td>';
+        <button class="btn btn-danger btn-sm borrar" id="boton" value="'.$value->id.'">Borrar</button>
+                     </td>';
         echo '</tr>';
       }
       ?>

@@ -17,6 +17,33 @@ function removerDetalle() {
   $("#detalle tr:last").remove();
 }
 
+$(function () {
+  $(document).on("click", ".borrar", function (event) {
+    event.preventDefault();
+    var mensaje;
+    var opcion = confirm("Desea borrar el registro ?");
+    if (opcion == true) {
+      mensaje = "Borrando registro..."+$(this).val();
+      var val = +$(this).val();
+      $(this).closest("tr").remove();
+    } else {
+      mensaje = "Has clickado Cancelar";
+    }
+  });
+});
+
+function borrarDetalle(id) {
+  var mensaje;
+  var opcion = confirm("Desea borrar el registro ?");
+  if (opcion == true) {
+    mensaje = "Borrando registro...";
+  } else {
+    mensaje = "Has clickado Cancelar";
+  }
+
+  //document.getElementById("ejemplo").innerHTML = mensaje;
+}
+
 function saveCabeceraDetalle() {
   if (
     $("#nombre").val().length < 1 ||
@@ -48,10 +75,19 @@ function verDetalle(id) {
     success: function (data) {
       $("#mensaje").html("");
       data = JSON.parse(data);
-			$("#table-detalle td").remove();
-      data.forEach(function(dat, index) {
-          $("#table-detalle").append('<tr class="table"><td>' + dat.telefono + '</td><td>' + dat.domicilio + '</td><td>' + dat.email + '</td><td>' + dat.pais + '</td> </tr>');
-         
+      $("#table-detalle td").remove();
+      data.forEach(function (dat, index) {
+        $("#table-detalle").append(
+          '<tr class="table"><td>' +
+            dat.telefono +
+            "</td><td>" +
+            dat.domicilio +
+            "</td><td>" +
+            dat.email +
+            "</td><td>" +
+            dat.pais +
+            '</td><td><button class="btn btn-danger btn-sm">Borrar</button></td> </tr>'
+        );
       });
     },
   });
