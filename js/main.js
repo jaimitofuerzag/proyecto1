@@ -17,32 +17,38 @@ function removerDetalle() {
   $("#detalle tr:last").remove();
 }
 
+//funcion para borrar cliente
 $(function () {
   $(document).on("click", ".borrar", function (event) {
     event.preventDefault();
     var mensaje;
     var opcion = confirm("Desea borrar el registro ?");
     if (opcion == true) {
-      mensaje = "Borrando registro..."+$(this).val();
-      var val = +$(this).val();
+      var val = $(this).val();
+      $.ajax({
+        type: "POST",
+        url: '../controller/ClienteController.php',
+        data: {id:val, action:'del'},
+        beforeSend: function () {
+          //antes de enviar
+          $('#mensaje').html('procesando ...');
+        },
+        success: function (data) {
+          //si hubo exito
+          // if (append) {
+          //   $(placeholder).append(data);
+          // } else {
+          //   $(placeholder).html(data);
+          // }
+        },
+      });
+
       $(this).closest("tr").remove();
     } else {
       mensaje = "Has clickado Cancelar";
     }
   });
 });
-
-function borrarDetalle(id) {
-  var mensaje;
-  var opcion = confirm("Desea borrar el registro ?");
-  if (opcion == true) {
-    mensaje = "Borrando registro...";
-  } else {
-    mensaje = "Has clickado Cancelar";
-  }
-
-  //document.getElementById("ejemplo").innerHTML = mensaje;
-}
 
 function saveCabeceraDetalle() {
   if (

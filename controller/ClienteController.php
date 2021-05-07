@@ -63,7 +63,7 @@ if (isset($_REQUEST['action'])) {
         case 'del':
             # code...
             echo 'Borrando Cliente y detalle';
-            $id = $_REQUEST['id'] = 56;
+            $id = $_REQUEST['id'];
 
             if ($cliente->deleteCliente($id, $cnn) == 0)
                 echo 'Registro borrado exitosamente';
