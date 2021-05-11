@@ -35,11 +35,8 @@ require_once 'config/config.php';
           Cliene
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo VIEW; ?>cliente.php">Crear Cliente</a>
-          <a class="dropdown-item" href="<?php echo VIEW; ?>listarClientes.php?action=getAll">Listar Cliente</a>
-
-          <a class="dropdown-item" href="#">Borra Cliente</a>
-          <a class="dropdown-item" href="#">Actualizar Cliente</a>
+          <a class="dropdown-item" href="<?php echo VIEW; ?>cliente.php">Crear Cliente / Detalle</a>
+          <a class="dropdown-item" href="<?php echo VIEW; ?>listarClientes.php?action=getAll">CRUD Cliente</a>
         </div>
       </li>
     </ul>

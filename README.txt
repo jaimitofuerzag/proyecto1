@@ -7,7 +7,10 @@ Al borrar cabecera automaticamente borra los detalles ya que fue configurado en 
 
 
 Pendiente CRUD Detalle del cliente
-Correr el script para crear base de datos 
-Configurar la conexion si fuese necesario
-Quedaria pendiente corregir las rutas estaticas para el redireccionamiento, 
-Pendiente de cear archivo de configuracion para ruteo
+Queda pendiente corregir las rutas de redireccionamiento para la navegacion
+Entre otros detalles, estare levantando v2 con arreglos y funcionalidades para mejor funcionamiento.
+
+Este codigo es a modo DIDACTICO
+
+
+Script de la bd esta en la carpeta db con el nombre de refecsa_syn.sql

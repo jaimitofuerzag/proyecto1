@@ -34,12 +34,7 @@ $(function () {
           $('#mensaje').html('procesando ...');
         },
         success: function (data) {
-          //si hubo exito
-          // if (append) {
-          //   $(placeholder).append(data);
-          // } else {
-          //   $(placeholder).html(data);
-          // }
+          $('#mensaje').html('Registro borrado con exito ...');
         },
       });
 

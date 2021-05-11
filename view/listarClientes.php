@@ -16,7 +16,7 @@ require_once '../controller/ClienteController.php';
 
 <!-- Main funciones JavaScript -->
 <script src="../js/main.js"></script>
-
+<!-- <button class="btn btn-success btn-sm">+ Cliente </button> -->
 <div class="table-responsive-xl">
   <table class="table">
     <thead class="thead-dark">
@@ -37,9 +37,11 @@ require_once '../controller/ClienteController.php';
         echo '<td>' . $value->nombre . '</td>';
         echo '<td>' . $value->apellido . '</td>';
         echo '<td>' . $value->cedula . '</td>';
-        echo '<td><button class="btn btn-success btn-sm" onclick="verDetalle(' . $value->id . ');">ver detalle</button> 
+        echo '<td>
+        <button class="btn btn-warning btn-sm" onclick="editar(' . $value->id . ');">Editar</button>
         <button class="btn btn-danger btn-sm borrar" id="boton" value="'.$value->id.'">Borrar</button>
-                     </td>';
+        <button class="btn btn-success btn-sm" onclick="verDetalle(' . $value->id . ');">ver detalle</button>        
+              </td>';
         echo '</tr>';
       }
       ?>
